@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p {
+            color: red;
+        }
+        p:hover {
+            color: blue;
+        }
+
+        body {
+            background-color: #f0f0f0;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+        }
+    </style>
+    <!-- 
+        /status
+        {
+            "bot": true,
+            "server": true,
+            "hostname": "DESKTOP-PLHAC6S",
+            "platform": "win32",
+            "arch": "x64",
+            "cpu": "AMD Ryzen 3 3200G with Radeon Vega Graphics    ",
+            "cores": 4,
+            "totalMemory": 31.94970703125,
+            "freeMemory": 13.865310668945312,
+            "uptime": 16.791328055555557,
+            "serverCommands": [
+                "restart",
+                "stop",
+                "start",
+                "status",
+                "killserver",
+                "help"
+            ]
+        }
+     -->
+    <script>
+        setInterval(() => {
+            fetch('/status')
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                document.body.innerHTML = `
+                <div style="text-align: center;">
+                    <h1>Server Status</h1>
+                    <p>Bot: ${data.bot}</p>
+                    <p>Server: ${data.server}</p>
+                    <p>Hostname: ${data.hostname}</p>
+                    <p>Platform: ${data.platform}</p>
+                    <p>Arch: ${data.arch}</p>
+                    <p>CPU: ${data.cpu}</p>
+                    <p>Cores: ${data.cores}</p>
+                    <p>Total Memory: ${data.totalMemory}</p>
+                    <p>Free Memory: ${data.freeMemory}</p>
+                    <p>Uptime: ${data.uptime}</p>
+                    <h2>Server Commands</h2>
+                    <ul>
+                    ${data.serverCommands.map(command => `<li>${command}</li>`).join('')}
+                    </ul>
+                </div>
+                `;
+            });
+        }, 5000); // 10000 milliseconds = 10 seconds
+    </script>
+</head>
+<body>
+</body>
+</html>
