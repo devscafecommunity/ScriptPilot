@@ -10,7 +10,6 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Task Scheduler Dashboard",
   description: "Local task scheduler with remote agents management",
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({
