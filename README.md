@@ -57,14 +57,17 @@ npm run dev
 4. Configure os agentes remotos
 
 Cada agente pode ser um pequeno servidor (em Python, Node, etc.) rodando na máquina-alvo. Exemplo de estrutura será incluído em /agents/.
+
 📂 Estrutura esperada
 
+```
 scriptpilot/
 ├── interface/       # Interface web (Next.js)
 ├── agents/          # Exemplos de agentes remotos
 ├── scripts/         # Scripts disponíveis para agendamento
 ├── logs/            # Logs das execuções
 └── README.md
+```
 
 📃 Licença
 
